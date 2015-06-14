@@ -3,6 +3,9 @@
  *  Main program to run AirUBC Database App
  */
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
 public class AirUBC {
     //private ResultSet resultSet = null;
     public static void main(String[] argv) throws Exception {
@@ -37,20 +40,56 @@ public class AirUBC {
 
         // Flight Schedules
         FlightSchedule fs = new FlightSchedule();
+        java.sql.Timestamp depTime;
+        java.sql.Timestamp avlTime;
+        int nSeats;
+
             /* insert airplane into flightschedule */
-        fs.insertAirplaneIntoFS(1, "01/11/2015 17:15", "01/11/2015 21:15", 12, 1, 2);
-        fs.insertAirplaneIntoFS(2, "01/12/2015 12:15", "01/12/2015 23:15", 65, 2, 3);
-        fs.insertAirplaneIntoFS(3, "08/10/2015 03:25", "08/10/2015 09:15", 90, 6, 1);
+            // Timestamp format: YYYY-MM-DD HH:MM:SS
+        depTime = java.sql.Timestamp.valueOf("2015-11-01 08:30:30");
+        avlTime = java.sql.Timestamp.valueOf("2015-11-01 12:30:00");
+        fs.insertAirplaneIntoFS(1, depTime, avlTime, 12, 1, 2);
+
+        depTime = java.sql.Timestamp.valueOf("2015-12-01 12:15:00");
+        avlTime = java.sql.Timestamp.valueOf("2015-12-01 23:15:00");
+        fs.insertAirplaneIntoFS(2, depTime, avlTime, 65, 2, 3);
+
+        depTime = java.sql.Timestamp.valueOf("2015-10-08 03:25:00");
+        avlTime = java.sql.Timestamp.valueOf("2015-10-08 09:15:30");
+        fs.insertAirplaneIntoFS(3, depTime, avlTime, 90, 6, 1);
+
             /* delete airplane from flightschedule */
-        fs.deleteAirplaneFromFS(1,1,"01/11/2015 17:15","01/11/2015 21:15");
-        fs.deleteAirplaneFromFS(3,6,"08/10/2015 03:25", "08/10/2015 09:15");
+        fs.deleteAirplaneFromFS(3, 6, depTime, avlTime);
 
             /* insert route into flightschedule */
-        //fs.insertRouteIntoFS();
-       // fs.insertRouteIntoFS();
-            /* delete route from flightschedule */
-       // fs.deleteRouteFromFS();
+        depTime = java.sql.Timestamp.valueOf("2015-10-08 03:25:00");
+        avlTime = java.sql.Timestamp.valueOf("2015-10-08 09:15:30");
+        fs.insertRouteIntoFS(3, depTime, avlTime, 100, 3, 6);
 
+        depTime = java.sql.Timestamp.valueOf("2015-04-08 10:00:00");
+        avlTime = java.sql.Timestamp.valueOf("2015-04-10 15:15:30");
+        fs.insertRouteIntoFS(4, depTime, avlTime, 70, 1, 2);
+            /* delete route from flightschedule */
+        fs.deleteRouteFromFS(4, 2, depTime, avlTime);
+
+
+        // AirplaneFlight
+        AirplaneFlight af = new AirplaneFlight();
+            /* insert airplane-flight */
+        af.insertAirplaneFlight(1, 2);
+        af.insertAirplaneFlight(3, 4);
+
+            /* delete airplane-flight */
+        af.deleteAirplaneFlight(1,2);
+
+
+        // RouteSchedule
+        RouteSchedule rs = new RouteSchedule();
+            /* insert route-schedule */
+        rs.insertRouteSchedule(3,1);
+        rs.insertRouteSchedule(5,2);
+            /* delete route-schedule */
+        rs.deleteRouteSchedule(5,2);
 
     }
 }

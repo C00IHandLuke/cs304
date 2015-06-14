@@ -17,10 +17,6 @@ public class Airplane {
     private Statement stmt = null;
     private ResultSet resultSet = null;
 
-    private int planeID;
-    private String planeType;
-    private int nSeats;
-
     public Airplane () {}
 
     // add airplane
@@ -32,10 +28,6 @@ public class Airplane {
             pstmt.setInt(3, nSeats);
             pstmt.executeUpdate();
             pstmt.close();
-
-            this.planeID = planeID;
-            this.planeType = planeType;
-            this.nSeats = nSeats;
 
             return true;
 
@@ -59,16 +51,19 @@ public class Airplane {
         }
     }
 
-  /*  // getter methods
-    public int getPlaneID () {
-        return this.planeID;
-    }
+    // find the number of seats associated with an airplane
+    public int getnSeats (int planeID) {
+        int nSeats = 0;
+        try {
+            resultSet = stmt.executeQuery("SELECT airplane.nSeats from airplane WHERE planeID = " + planeID);
+            while(resultSet.next()){
+                nSeats = resultSet.getInt(3);
+            }
+            return nSeats;
 
-    public int getnSeats () {
-        return this.nSeats;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
-
-    public String getPlaneType () {
-        return this.planeType;
-    }*/
 }

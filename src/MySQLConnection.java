@@ -48,7 +48,7 @@ public class MySQLConnection {
         resultSet = statement.executeQuery("select * from route");
         printResultSet(resultSet);
 
-        //closeRS();
+        //close();
     }
 
     private void printResultSet (ResultSet rs) throws SQLException {

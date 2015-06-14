@@ -22,7 +22,7 @@ public class RouteSchedule {
     // add route-schedule
     public boolean insertRouteSchedule (int routeID, int fsID) {
         try {
-            pstmt = connect.prepareStatement("INSERT INTO airplaneflight VALUES (?, ?)");
+            pstmt = connect.prepareStatement("INSERT INTO routeschedule VALUES (?, ?)");
             pstmt.setInt(1, routeID);
             pstmt.setInt(2, fsID);
             pstmt.executeUpdate();
@@ -41,8 +41,8 @@ public class RouteSchedule {
         try {
             stmt = connect.createStatement();
             int rows = stmt.executeUpdate(
-                    "DELETE from airplaneflight " +
-                            "WHERE planeID = " + routeID +
+                    "DELETE from routeschedule " +
+                            "WHERE routeID = " + routeID +
                             "AND fsID = " + fsID);
 
             stmt.close();

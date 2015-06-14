@@ -24,14 +24,14 @@ WHERE passengerID = ?
 -- Flight Schedule
     -- add airplane to schedule
 INSERT into flightschedule
-VALUES (?,?,?,?)
+VALUES (?,?,?,?,?,?)
     -- remove airplane from schedule
 DELETE from flightschedule
 WHERE fsID = ? AND planeID = ? AND depTime = ? and avlTime = ?
 
     -- add route to schedule
 INSERT into flightschedule
-VALUES (?,?,?,?)
+VALUES (?,?,?,?,?,?)
     -- remove route from schedule
 DELETE from flightschedule
 WHERE fsID = ? AND routeID = ? AND depTime = ? AND avlTime = ?

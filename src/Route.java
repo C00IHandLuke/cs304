@@ -17,10 +17,6 @@ public class Route {
     public Statement stmt = null;
    // public ResultSet resultSet = null;
 
-    private int routeID;
-    private String dest;
-    private String depart;
-
     public Route() {}
 
     // add route
@@ -33,10 +29,6 @@ public class Route {
             pstmt.setString(3, depart);
             pstmt.executeUpdate();
             pstmt.close();
-
-            this.routeID = routeID;
-            this.dest = dest;
-            this.depart = depart;
 
             return true;
 
@@ -59,18 +51,5 @@ public class Route {
             return false;
         }
     }
-
-    // getter methods
-   /* public int getRouteID () {
-        return this.routeID;
-    }
-
-    public String getDeparture () {
-        return this.depart;
-    }
-
-    public String getDestination () {
-        return this.dest;
-    }*/
 }
 
