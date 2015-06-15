@@ -1,17 +1,11 @@
 /*
  * AirplaneFlight.java
- *  Specifications:
- *      - add/remove flight schedule to/from an airplane
- *
  *  Queries:
- *
+ *      - insert & delete airplaneflight
+ *      - update airplaneflight
  */
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class AirplaneFlight {
     private Connection connect = MySQLConnection.getInstance().getConnection();
@@ -21,7 +15,6 @@ public class AirplaneFlight {
 
     // add airplane-flight
     public boolean insertAirplaneFlight (int planeID, int fsID) {
-
         try {
             pstmt = connect.prepareStatement("INSERT INTO airplaneflight VALUES (?, ?)");
             pstmt.setInt(1, planeID);
@@ -35,7 +28,6 @@ public class AirplaneFlight {
             System.out.println(e.getMessage());
             return false;
         }
-
     }
 
     // delete airplane-flight
@@ -43,15 +35,29 @@ public class AirplaneFlight {
         try {
             stmt = connect.createStatement();
             int rows = stmt.executeUpdate(
-                    "DELETE from airplaneflight " +
-                            "WHERE planeID = " + planeID +
-                            "AND fsID = " + fsID);
+                    "DELETE from airplaneflight" +
+                            " WHERE planeID = " + planeID +
+                            " AND fsID = " + fsID);
 
             stmt.close();
             return (rows != 0) ? true : false;
 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+    }
+
+    // update flightschedule associated with an airplane
+    public boolean updateAirplaneFlight (int planeID, int newFlightScheduleID) {
+        try {
+            Statement stmt = connect.createStatement();
+            int rows = stmt.executeUpdate("UPDATE airplaneflight SET fsID = "+ newFlightScheduleID + " WHERE planeID = " + planeID);
+            stmt.close();
+            return (rows != 0) ? true: false;
+        }
+        catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
             return false;
         }
     }

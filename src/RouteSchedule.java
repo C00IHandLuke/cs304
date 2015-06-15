@@ -1,17 +1,11 @@
 /*
  * RouteSchedule.java
- *  Specifications:
- *      - add/delete a flight schedule to/from a route
- *
  *  Queries:
- *
+ *      - insert & delete routeschedule
+ *      - update routeschedule
  */
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class RouteSchedule {
     private Connection connect = MySQLConnection.getInstance().getConnection();
@@ -30,8 +24,8 @@ public class RouteSchedule {
 
             return true;
 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             return false;
         }
     }
@@ -42,14 +36,28 @@ public class RouteSchedule {
             stmt = connect.createStatement();
             int rows = stmt.executeUpdate(
                     "DELETE from routeschedule " +
-                            "WHERE routeID = " + routeID +
-                            "AND fsID = " + fsID);
+                            " WHERE routeID = " + routeID +
+                            " AND fsID = " + fsID);
 
             stmt.close();
             return (rows != 0) ? true : false;
 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+    }
+
+    // update routeschedule associated with an airplane
+    public boolean updateAirplaneFlight (int routeID, int newFlightScheduleID) {
+        try {
+            Statement stmt = connect.createStatement();
+            int rows = stmt.executeUpdate("UPDATE routeschedule SET fsID = "+ newFlightScheduleID + " WHERE routeID = " + routeID);
+            stmt.close();
+            return (rows != 0) ? true: false;
+        }
+        catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
             return false;
         }
     }

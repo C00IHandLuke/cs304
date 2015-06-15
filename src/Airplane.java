@@ -1,15 +1,12 @@
 /*
  * Airplane.java
  *  Queries:
- *      - insert airplane
- *      - delete airplane
+ *      - insert & delete airplane
+ *      - update plane type & number of seats
+ *      - search for airplane & return number of seats
  */
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Airplane {
     private Connection connect = MySQLConnection.getInstance().getConnection();
@@ -22,7 +19,7 @@ public class Airplane {
     // add airplane
     public boolean insertAirplane (int planeID, String planeType, int nSeats) {
         try {
-            pstmt = connect.prepareStatement("INSERT into airplane VALUES (?,?,?)");
+            pstmt = connect.prepareStatement("INSERT INTO airplane VALUES (?,?,?)");
             pstmt.setInt(1, planeID);
             pstmt.setString(2, planeType);
             pstmt.setInt(3, nSeats);
@@ -31,8 +28,8 @@ public class Airplane {
 
             return true;
 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
             return false;
         }
     }
@@ -41,21 +38,48 @@ public class Airplane {
     public boolean deleteAirplane (int planeID) {
         try {
             stmt = connect.createStatement();
-            int rows = stmt.executeUpdate("DELETE from airplane WHERE planeID = " + planeID);
+            int rows = stmt.executeUpdate("DELETE FROM airplane WHERE planeID = " + planeID);
             stmt.close();
             return (rows != 0) ? true : false;
 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
             return false;
         }
     }
 
-    // find the number of seats associated with an airplane
-    public int getnSeats (int planeID) {
+    // update
+    public boolean updateNumberOfSeats (int routeID, int newNumOfSeats) {
+        try {
+            Statement stmt = connect.createStatement();
+            int rows = stmt.executeUpdate("UPDATE airplane SET nSeats = "+ newNumOfSeats + " WHERE routeID = " + routeID);
+            stmt.close();
+            return (rows != 0) ? true: false;
+        }
+        catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
+            return false;
+        }
+    }
+
+    public boolean updatePlaneType (int routeID, String newPlaneType) {
+        try {
+            Statement stmt = connect.createStatement();
+            int rows = stmt.executeUpdate("UPDATE airplane SET planeType = "+ newPlaneType + " WHERE routeID = " + routeID);
+            stmt.close();
+            return (rows != 0) ? true: false;
+        }
+        catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
+            return false;
+        }
+    }
+
+    // get the number of seats associated with an airplane
+    public int getNumberOfSeats (int planeID) {
         int nSeats = 0;
         try {
-            resultSet = stmt.executeQuery("SELECT airplane.nSeats from airplane WHERE planeID = " + planeID);
+            resultSet = stmt.executeQuery("SELECT * FROM airplane WHERE planeID = " + planeID);
             while(resultSet.next()){
                 nSeats = resultSet.getInt(3);
             }

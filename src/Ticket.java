@@ -1,34 +1,24 @@
 /*
  * Ticket.java
- *  Specifications:
- *      issue a ticket
- *      cancel a ticket
- *
  *  Queries:
- *      search for ticket
- *
+ *      - insert & delete ticket
+ *      - update ticket if cancelled
  */
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Date;
 
 public class Ticket {
     private Connection connect = MySQLConnection.getInstance().getConnection();
     private PreparedStatement pstmt = null;
     private Statement stmt = null;
-    private ResultSet resultSet = null;
-
-    public String bkgDate;
 
     public Ticket(){}
 
     // add ticket
     public boolean insertTicket(int ticketNo, int price, String bkgDate, String cnlDate, int empID , int fsID, int passengerID) {
         try {
-            pstmt = connect.prepareStatement("INSERT into route VALUES (?,?,?,?,?,?,?)");
+            pstmt = connect.prepareStatement("INSERT INTO ticket VALUES (?,?,?,?,?,?,?)");
             pstmt.setInt(1, ticketNo);
             pstmt.setInt(2, price);
             pstmt.setString(3, bkgDate);
@@ -40,8 +30,8 @@ public class Ticket {
             pstmt.close();
             return true;
 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             return false;
         }
 
@@ -49,36 +39,32 @@ public class Ticket {
 
     // delete ticket
     public boolean deleteTicket(int ticketNo) {
-
         try{
             stmt = connect.createStatement();
-            int rows = stmt.executeUpdate("DELETE from ticket WHERE ticketNo = " + ticketNo);
+            int rows = stmt.executeUpdate("DELETE FROM ticket WHERE ticketNo = " + ticketNo);
             stmt.close();
             return (rows != 0) ? true : false;
 
-        }catch (SQLException e) {
-            System.out.println(e.getMessage());
+        }catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             return false;
         }
     }
 
-    // cancels a ticket and calculate its cancellation fee
-    public void cancelTicket(int ticketNo) {
+    // cancels a ticket and update ticket table
+    public boolean cancelTicket(int ticketNo) {
+        Date currentDate = new java.util.Date();
+        Timestamp currentTime = new Timestamp(currentDate.getTime());
 
         try {
-
-            resultSet = stmt.executeQuery("select * from ticket where ticketNo = " + ticketNo);
-
-            while (resultSet.next()) {
-                String bkgDate = resultSet.getString(3);
-                System.out.println(bkgDate);
-            }
-
-
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+            Statement stmt = connect.createStatement();
+            int rows = stmt.executeUpdate("UPDATE ticket SET cnlDate = "+ currentTime + " WHERE routeID = " + ticketNo);
+            stmt.close();
+            return (rows != 0) ? true: false;
+        }
+        catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
+            return false;
         }
     }
 
@@ -86,6 +72,4 @@ public class Ticket {
     public void searchTicket() {
 
     }
-
-
 }
