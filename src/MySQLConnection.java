@@ -1,11 +1,15 @@
 import java.sql.*;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class MySQLConnection {
     private static MySQLConnection sqlConnection = null;
     private Connection connection = null;
 
     private String dbName = "hello";
-    private String url = "jdbc:mysql://localhost:3306/" + dbName;
+    private String url = "jdbc:mysql://localhost:3306/";
     private String username = "root";
     private String password = "";
 
@@ -25,7 +29,7 @@ public class MySQLConnection {
 
         try {
             connection = DriverManager
-                    .getConnection(url, username, password);
+                    .getConnection(url+dbName, username, password);
 
         } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");
