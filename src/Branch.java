@@ -34,5 +34,18 @@ public class Branch {
         }
     }
 
+    public boolean updatebranchPhone(String branchId, String newPhone){
+        try {
+            Statement stmt = con.createStatement();
+            int rows = stmt.executeUpdate("Update Branch set phone ="+ newPhone + "WHERE branchId = " + branchId);
+            stmt.close();
+            return (rows != 0) ? true: false;
+        }
+        catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
+            return false;
+        }
+
+    }
 
 }

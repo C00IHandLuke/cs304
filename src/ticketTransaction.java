@@ -6,11 +6,11 @@ public class ticketTransaction {
 
     public ticketTransaction () {}
 
-    public boolean addTicketTrans(int branchId, String phone) {
+    public boolean addTicketTrans(int transactionId, int ticketNo) {
         try {
-            PreparedStatement stmt = con.prepareStatement("INSERT INTO customer VALUES (?, ?)");
-            stmt.setInt(1, branchId);
-            stmt.setString(2, phone);
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO ticketTransaction VALUES (?, ?)");
+            stmt.setInt(1, transactionId);
+            stmt.setInt(2, ticketNo);
             stmt.executeUpdate();
             stmt.close();
             return true;
@@ -21,10 +21,10 @@ public class ticketTransaction {
         }
     }
 
-    public boolean deleteTicketTrans(int branchId) {
+    public boolean deleteTicketTrans(int transactionId, int ticketNo) {
         try {
             Statement stmt = con.createStatement();
-            int rows = stmt.executeUpdate("DELETE FROM branch WHERE branchId = " + branchId);
+            int rows = stmt.executeUpdate("DELETE FROM branch WHERE branchId = " + transactionId +"and ticketNo =" + ticketNo);
             stmt.close();
             return (rows != 0) ? true: false;
         }

@@ -38,4 +38,69 @@ public class Employee {
             return false;
         }
     }
+
+    public boolean updateEmployeeName(String employeeId, String newName){
+        try {
+            Statement stmt = con.createStatement();
+            int rows = stmt.executeUpdate("Update Employee set name ="+ newName + "WHERE employeeId = " + employeeId);
+            stmt.close();
+            return (rows != 0) ? true: false;
+        }
+        catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
+            return false;
+        }
+    }
+
+    public boolean updateEmployeeAddress(String employeeId, String newAddress){
+        try {
+            Statement stmt = con.createStatement();
+            int rows = stmt.executeUpdate("Update Employee set address ="+ newAddress + "WHERE employeeId = " + employeeId);
+            stmt.close();
+            return (rows != 0) ? true: false;
+        }
+        catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
+            return false;
+        }
+    }
+
+    public boolean updateEmployeeRole(String employeeId, String newRole){
+        try {
+            Statement stmt = con.createStatement();
+            int rows = stmt.executeUpdate("Update Employee set role ="+ newRole + "WHERE employeeId = " + employeeId);
+            stmt.close();
+            return (rows != 0) ? true: false;
+        }
+        catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
+            return false;
+        }
+    }
+
+    public boolean updateEmployeePhone(String employeeId, String newPhone){
+        try {
+            Statement stmt = con.createStatement();
+            int rows = stmt.executeUpdate("Update Employee set phone ="+ newPhone + "WHERE employeeId = " + employeeId);
+            stmt.close();
+            return (rows != 0) ? true: false;
+        }
+        catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
+            return false;
+        }
+    }
+
+    public boolean updateEmployeeBranchId(String employeeId, String newBranchId){
+        try {
+            Statement stmt = con.createStatement();
+            int rows = stmt.executeUpdate("Update Employee set branchId ="+ newBranchId + "WHERE employeeId = " + employeeId);
+            stmt.close();
+            return (rows != 0) ? true: false;
+        }
+        catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
+            return false;
+        }
+    }
 }

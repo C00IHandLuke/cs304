@@ -50,4 +50,39 @@ public class Location {
     }
 
 
+    public boolean changeCity(String province, String newcity, String postalcode){
+
+        try {
+            Statement stmt = con.createStatement();
+            int rows = stmt.executeUpdate("update location\n" +
+                    "set city ="+ newcity +
+                    "where province =" + province +
+                    "and postalCode =" + postalcode);
+            stmt.close();
+            return (rows != 0) ? true: false;
+        }
+        catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
+            return false;
+        }
+    }
+
+    public boolean changeProvince(String newProvince, String city, String postalcode){
+
+        try {
+            Statement stmt = con.createStatement();
+            int rows = stmt.executeUpdate("update location\n" +
+                    "set province ="+ newProvince +
+                    "and city =" + city +
+                    "and postalCode =" + postalcode);
+            stmt.close();
+            return (rows != 0) ? true: false;
+        }
+        catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
+            return false;
+        }
+    }
+
+
 }
