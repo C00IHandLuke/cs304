@@ -10,13 +10,13 @@ AirUBC is built on a Java platform (IntelliJ IDEA) and MySQL. Download the drive
 - mysql-connector-java-5.0.8
 
 ### Functionality
-a user is able to view their tickets
-employees can issue tickets
-im not sure what we included in the demo so put that stuff here
+-a user is able to view their tickets
+-employees can issue tickets
+-im not sure what we included in the demo so put that stuff here
 
 ### Explination
-talk about the difficult queries and how they are implemented
-ex. to make this table we had to join these tables
+-talk about the difficult queries and how they are implemented
+-ex. to make this table we had to join these tables
 
 
 ### Details
