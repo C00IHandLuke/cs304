@@ -7,14 +7,14 @@ public class Passenger {
     public Passenger() {
     }
 
-    public boolean addPassenger(int passengerId, String name, String address, String phone, Date DoB) {
+    public boolean addPassenger(int passengerId, String name, String address, String phone, Timestamp DoB) {
         try {
             PreparedStatement stmt = con.prepareStatement("INSERT INTO passenger VALUES (?, ?, ?, ?, ?)");
             stmt.setInt(1, passengerId);
             stmt.setString(2, name);
             stmt.setString(3, address);
             stmt.setString(4, phone);
-            stmt.setDate(5, DoB);
+            stmt.setTimestamp(5, DoB);
             stmt.executeUpdate();
             stmt.close();
             return true;

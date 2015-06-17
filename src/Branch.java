@@ -8,7 +8,7 @@ public class Branch {
 
     public boolean addBranch(int branchId, String phone) {
         try {
-            PreparedStatement stmt = con.prepareStatement("INSERT INTO customer VALUES (?, ?)");
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO branch VALUES (?, ?)");
             stmt.setInt(1, branchId);
             stmt.setString(2, phone);
             stmt.executeUpdate();

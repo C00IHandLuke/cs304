@@ -13,6 +13,8 @@ public class AirplaneFlight {
     private Statement stmt = null;
     private ResultSet resultSet = null;
 
+    public AirplaneFlight () {}
+
     // add airplane-flight
     public boolean insertAirplaneFlight (int planeID, int fsID) {
         try {

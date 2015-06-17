@@ -16,14 +16,14 @@ public class Ticket {
     public Ticket(){}
 
     // add ticket
-    public boolean insertTicket(int ticketNo, int price, String bkgDate, String cnlDate, int empID , int fsID, int passengerID) {
+    public boolean insertTicket(int ticketNo, int price, String bkgDate, String cnlDate, String empID , int fsID, int passengerID) {
         try {
             pstmt = connect.prepareStatement("INSERT INTO ticket VALUES (?,?,?,?,?,?,?)");
             pstmt.setInt(1, ticketNo);
             pstmt.setInt(2, price);
             pstmt.setString(3, bkgDate);
             pstmt.setString(4, cnlDate);
-            pstmt.setInt(5, empID);
+            pstmt.setString(5, empID);
             pstmt.setInt(6, fsID);
             pstmt.setInt(7, passengerID);
             pstmt.executeUpdate();

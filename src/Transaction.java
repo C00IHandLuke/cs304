@@ -6,14 +6,14 @@ public class Transaction {
 
     public Transaction () {}
 
-    public boolean insertTransaction(String transactionId, String paymentMethod, String employeeId, String passengerId) {
+    public boolean insertTransaction(int transactionId, String paymentMethod, String employeeId, int passengerId) {
         try {
             PreparedStatement stmt = con.prepareStatement("insert into Transactions\n" +
                     "values (?,?,?,?)");
-            stmt.setString(1, transactionId);
+            stmt.setInt(1, transactionId);
             stmt.setString(2, paymentMethod);
             stmt.setString(3, employeeId);
-            stmt.setString(4, passengerId);
+            stmt.setInt(4, passengerId);
             stmt.executeUpdate();
             stmt.close();
             return true;
@@ -24,7 +24,7 @@ public class Transaction {
         }
     }
 
-    public boolean deleteTransaction(String transactionId) {
+    public boolean deleteTransaction(int transactionId) {
         try {
             Statement stmt = con.createStatement();
             int rows = stmt.executeUpdate("DELETE FROM transaction WHERE transcationId = " + transactionId);

@@ -7,15 +7,15 @@ public class Employee {
 
     public Employee () {}
 
-    public boolean addEmployee(String employeeId,String name,String address,String role,String phone,String branchId) {
+    public boolean addEmployee(String employeeId,String name,String address,String role,String phone,int branchId) {
         try {
-            PreparedStatement stmt = con.prepareStatement("INSERT INTO customer VALUES (?, ?, ?, ?, ?, ?)");
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO employee VALUES (?, ?, ?, ?, ?, ?)");
             stmt.setString(1, employeeId);
             stmt.setString(2, name);
             stmt.setString(3, address);
             stmt.setString(4, role);
             stmt.setString(5, phone);
-            stmt.setString(6, branchId);
+            stmt.setInt(6, branchId);
             stmt.executeUpdate();
             stmt.close();
             return true;
@@ -29,7 +29,7 @@ public class Employee {
     public boolean removeEmployee(String employeeId) {
         try {
             Statement stmt = con.createStatement();
-            int rows = stmt.executeUpdate("DELETE FROM employee WHERE employeeId = " + employeeId);
+            int rows = stmt.executeUpdate("DELETE FROM employee WHERE employeeID = " + employeeId);
             stmt.close();
             return (rows != 0) ? true: false;
         }
@@ -91,7 +91,7 @@ public class Employee {
         }
     }
 
-    public boolean updateEmployeeBranchId(String employeeId, String newBranchId){
+    public boolean updateEmployeeBranchId(String employeeId, int newBranchId){
         try {
             Statement stmt = con.createStatement();
             int rows = stmt.executeUpdate("Update Employee set branchId ="+ newBranchId + "WHERE employeeId = " + employeeId);
@@ -103,4 +103,6 @@ public class Employee {
             return false;
         }
     }
+
+
 }

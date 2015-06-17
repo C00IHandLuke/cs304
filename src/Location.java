@@ -13,7 +13,7 @@ public class Location {
 
     public Location () {}
 
-    public boolean insertLocation( String province, String city, String postalCode, String branchId  ){
+    public boolean insertLocation( String province, String city, String postalCode, int branchId  ){
 
         try {
             PreparedStatement stmt = con.prepareStatement("Insert into Location\n" +
@@ -21,7 +21,7 @@ public class Location {
             stmt.setString(1, province);
             stmt.setString(2, city);
             stmt.setString(3, postalCode);
-            stmt.setString(4, branchId);
+            stmt.setInt(4, branchId);
             stmt.executeUpdate();
             stmt.close();
             return true;

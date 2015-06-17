@@ -1,0 +1,884 @@
+UBC AIR ticket transaction
+    CREATE DATABASE  IF NOT EXISTS `ubcair` /*!40100 DEFAULT CHARACTER SET latin1 */;
+    USE `ubcair`;
+    -- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+    --
+    -- Host: 127.0.0.1    Database: ubcair
+    --   ------------------------------------------------------
+    -- Server version	5.6.25
+
+    /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+    /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+    /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+    /*!40101 SET NAMES utf8 */;
+    /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+    /*!40103 SET TIME_ZONE='+00:00' */;
+    /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+    /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+    /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+    /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `tickettransaction`
+--
+
+DROP TABLE IF EXISTS `tickettransaction`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tickettransaction` (
+  `transactionid` int(11) NOT NULL,
+  `ticketNo` int(11) NOT NULL,
+  PRIMARY KEY (`transactionid`,`ticketNo`),
+  KEY `ticket-No_idx` (`ticketNo`),
+  CONSTRAINT `ticketNo` FOREIGN KEY (`ticketNo`) REFERENCES `ticket` (`ticketNo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `transactionid` FOREIGN KEY (`transactionid`) REFERENCES `transaction` (`transactionid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tickettransaction`
+--
+
+LOCK TABLES `tickettransaction` WRITE;
+/*!40000 ALTER TABLE `tickettransaction` DISABLE KEYS */;
+INSERT INTO `tickettransaction` VALUES (1000001,83500001),(1000004,83500002),(1000002,83500003),(1000005,83500004),(1000003,83500005);
+/*!40000 ALTER TABLE `tickettransaction` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-06-16 18:14:10
+
+
+
+
+
+
+
+
+
+UBC AIRPLANE Flight
+
+CREATE DATABASE  IF NOT EXISTS `ubcair` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `ubcair`;
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: ubcair
+-- ------------------------------------------------------
+-- Server version	5.6.25
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `airplaneflight`
+--
+
+DROP TABLE IF EXISTS `airplaneflight`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `airplaneflight` (
+  `planeid` int(11) NOT NULL,
+  `flightscheduleid` int(11) NOT NULL,
+  PRIMARY KEY (`planeid`,`flightscheduleid`),
+  KEY `flightschedule-id_idx` (`flightscheduleid`),
+  CONSTRAINT `flightscheduleid3` FOREIGN KEY (`flightscheduleid`) REFERENCES `flightschedule` (`flightscheduleid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `planeid1` FOREIGN KEY (`planeid`) REFERENCES `airplane` (`planeid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `airplaneflight`
+--
+
+LOCK TABLES `airplaneflight` WRITE;
+/*!40000 ALTER TABLE `airplaneflight` DISABLE KEYS */;
+INSERT INTO `airplaneflight` VALUES (102,1),(101,2),(102,2),(105,3),(102,4);
+/*!40000 ALTER TABLE `airplaneflight` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-06-16 18:14:11
+
+
+
+
+
+
+
+
+
+UBC AIR Employee
+
+CREATE DATABASE  IF NOT EXISTS `ubcair` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `ubcair`;
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: ubcair
+-- ------------------------------------------------------
+-- Server version	5.6.25
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `employee`
+--
+
+DROP TABLE IF EXISTS `employee`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `employee` (
+  `employeeid` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `role` varchar(45) DEFAULT NULL,
+  `phoneno` varchar(25) DEFAULT NULL,
+  `branchid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`employeeid`),
+  KEY `branch-id_idx` (`branchid`),
+  CONSTRAINT `FKemployeebranchid` FOREIGN KEY (`branchid`) REFERENCES `branch` (`branchid`) ON DELETE CASCADE,
+  CONSTRAINT `branchid` FOREIGN KEY (`branchid`) REFERENCES `branch` (`branchid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `employee`
+--
+
+LOCK TABLES `employee` WRITE;
+/*!40000 ALTER TABLE `employee` DISABLE KEYS */;
+INSERT INTO `employee` VALUES (20,'Neymar','gegeg','gewg','3001203',1001),(10001,'John Smith','123- 324 West 6th Avenue','manager','(416) 333 - 2345',1003),(10002,'Kelly Anyi','123- 456 Larch','ticketing officer','(778) 437- 4444',1002),(10003,'Fred Park','55 Laurier Avenue West','ticketing officer','(780) 437- 8544',1004),(10004,'Dylan Iruretagoyna','48 Avenue Morrison, Mont-Royal','ticketing officer','(418) 375 - 7355',1005),(10005,'Pouria Lotfi','10299 87 Street Northwest','ticketing officer','(604) 217-1111',1001);
+/*!40000 ALTER TABLE `employee` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-06-16 18:14:11
+
+
+
+
+
+
+UBC AIR Flight Schedule
+
+CREATE DATABASE  IF NOT EXISTS `ubcair` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `ubcair`;
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: ubcair
+-- ------------------------------------------------------
+-- Server version	5.6.25
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `flightschedule`
+--
+
+DROP TABLE IF EXISTS `flightschedule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `flightschedule` (
+  `flightscheduleid` int(11) NOT NULL,
+  `departtime` varchar(20) DEFAULT NULL,
+  `arrivetime` varchar(20) DEFAULT NULL,
+  `seatsavailable` int(11) DEFAULT NULL,
+  `planeid` int(11) DEFAULT NULL,
+  `routeid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`flightscheduleid`),
+  KEY `plane-id_idx` (`planeid`),
+  KEY `route-id_idx` (`routeid`),
+  CONSTRAINT `FKflightscheduleplaneid` FOREIGN KEY (`planeid`) REFERENCES `airplane` (`planeid`),
+  CONSTRAINT `FKflightschedulerouteid` FOREIGN KEY (`routeid`) REFERENCES `route` (`routeid`),
+  CONSTRAINT `planeid` FOREIGN KEY (`planeid`) REFERENCES `airplane` (`planeid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `routeid` FOREIGN KEY (`routeid`) REFERENCES `route` (`routeid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `flightschedule`
+--
+
+LOCK TABLES `flightschedule` WRITE;
+/*!40000 ALTER TABLE `flightschedule` DISABLE KEYS */;
+INSERT INTO `flightschedule` VALUES (1,'2015-11-01 17:15','2015-11-01 21:15',12,101,5),(2,'2015-12-01 12:15','2015-12-01 23:15',65,105,3),(3,'2015-10-08 03:25','2015-10-08 09:15',90,102,4),(4,'2015-08-13 07:15','2015-08-13 17:15',1,105,2),(5,'2015-09-22 13:45','2015-09-22 21:30',23,101,1);
+/*!40000 ALTER TABLE `flightschedule` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-06-16 18:14:11
+
+
+
+
+
+
+
+UBC AIR Locations
+
+CREATE DATABASE  IF NOT EXISTS `ubcair` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `ubcair`;
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: ubcair
+-- ------------------------------------------------------
+-- Server version	5.6.25
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `location`
+--
+
+DROP TABLE IF EXISTS `location`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `location` (
+  `province` varchar(45) NOT NULL,
+  `city` varchar(45) NOT NULL,
+  `postalcode` char(10) NOT NULL,
+  `branchid` int(11) NOT NULL,
+  PRIMARY KEY (`province`,`city`,`postalcode`),
+  KEY `branch_id_idx` (`branchid`),
+  CONSTRAINT `FKlocationbranchid` FOREIGN KEY (`branchid`) REFERENCES `branch` (`branchid`),
+  CONSTRAINT `branchid0` FOREIGN KEY (`branchid`) REFERENCES `branch` (`branchid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `location`
+--
+
+LOCK TABLES `location` WRITE;
+/*!40000 ALTER TABLE `location` DISABLE KEYS */;
+INSERT INTO `location` VALUES ('bc','surrey','v3t1v1',1001),('BC','Vancouver','V6J 9W4',1001),('test ','test','test',1001),('AB','Edmonton','T5H 1N6',1002),('ON','Toronto','M3B 1Z4',1003),('ON','Toronto','M5P 2N7',1004),('QC','Montreal','H3R 1K2',1005),('te','tet','tet',1005);
+/*!40000 ALTER TABLE `location` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-06-16 18:14:11
+
+
+
+
+
+
+
+
+
+
+UBC AIR Route
+
+CREATE DATABASE  IF NOT EXISTS `ubcair` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `ubcair`;
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: ubcair
+-- ------------------------------------------------------
+-- Server version	5.6.25
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `route`
+--
+
+DROP TABLE IF EXISTS `route`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `route` (
+  `routeid` int(11) NOT NULL,
+  `destination` varchar(45) DEFAULT NULL,
+  `departure` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`routeid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `route`
+--
+
+LOCK TABLES `route` WRITE;
+/*!40000 ALTER TABLE `route` DISABLE KEYS */;
+INSERT INTO `route` VALUES (1,'YVR','YYZ'),(2,'YVR','YEG'),(3,'YYZ','YUL'),(4,'YEG','YYZ'),(5,'YQB','YYZ');
+/*!40000 ALTER TABLE `route` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-06-16 18:14:10
+
+
+
+
+
+
+
+
+
+UBC AIR Transaction
+
+CREATE DATABASE  IF NOT EXISTS `ubcair` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `ubcair`;
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: ubcair
+-- ------------------------------------------------------
+-- Server version	5.6.25
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `transaction`
+--
+
+DROP TABLE IF EXISTS `transaction`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `transaction` (
+  `transactionid` int(11) NOT NULL,
+  `patmentmethod` varchar(45) DEFAULT NULL,
+  `employeeid` int(11) DEFAULT NULL,
+  `passengerid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`transactionid`),
+  KEY `employee-id_idx` (`employeeid`),
+  KEY `passenger-id_idx` (`passengerid`),
+  CONSTRAINT `employeeid` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `passengerid` FOREIGN KEY (`passengerid`) REFERENCES `passenger` (`passengerid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `transactionemployeeid` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`),
+  CONSTRAINT `transactionpassengerid` FOREIGN KEY (`passengerid`) REFERENCES `passenger` (`passengerid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transaction`
+--
+
+LOCK TABLES `transaction` WRITE;
+/*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
+INSERT INTO `transaction` VALUES (1000001,'visa',10002,30001),(1000002,'master card',10003,30004),(1000003,'cash',10002,30004),(1000004,'debit',10005,30003),(1000005,'visa',10005,30002);
+/*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-06-16 18:14:10
+
+
+
+
+
+
+
+
+
+UBC AIR Airplane
+
+CREATE DATABASE  IF NOT EXISTS `ubcair` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `ubcair`;
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: ubcair
+-- ------------------------------------------------------
+-- Server version	5.6.25
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `airplane`
+--
+
+DROP TABLE IF EXISTS `airplane`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `airplane` (
+  `planeid` int(11) NOT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  `numberofseats` int(11) DEFAULT NULL,
+  PRIMARY KEY (`planeid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `airplane`
+--
+
+LOCK TABLES `airplane` WRITE;
+/*!40000 ALTER TABLE `airplane` DISABLE KEYS */;
+INSERT INTO `airplane` VALUES (21,'fred',21221220),(29,'boeing 889',201),(101,'boeing-777',500),(102,'boeing-747',360),(103,'boeing-737',120),(104,'airbus-A380',520),(105,'airbus-A300',160);
+/*!40000 ALTER TABLE `airplane` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-06-16 18:14:11
+
+
+
+
+
+
+
+
+
+UBC AIR Branch
+
+CREATE DATABASE  IF NOT EXISTS `ubcair` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `ubcair`;
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: ubcair
+-- ------------------------------------------------------
+-- Server version	5.6.25
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `branch`
+--
+
+DROP TABLE IF EXISTS `branch`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `branch` (
+  `branchid` int(11) NOT NULL,
+  `phoneno` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`branchid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `branch`
+--
+
+LOCK TABLES `branch` WRITE;
+/*!40000 ALTER TABLE `branch` DISABLE KEYS */;
+INSERT INTO `branch` VALUES (1001,'(604) 217-7564'),(1002,'(780) 437- 5504'),(1003,'(416) 333 - 2233'),(1004,'(416) 466 - 2111'),(1005,'(418) 375 - 7355'),(59219,'4215214');
+/*!40000 ALTER TABLE `branch` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-06-16 18:14:11
+
+
+
+
+
+
+
+
+
+UBC AIR Passenger
+
+
+CREATE DATABASE  IF NOT EXISTS `ubcair` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `ubcair`;
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: ubcair
+-- ------------------------------------------------------
+-- Server version	5.6.25
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `passenger`
+--
+
+DROP TABLE IF EXISTS `passenger`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `passenger` (
+  `passengerid` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `phoneno` varchar(25) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  PRIMARY KEY (`passengerid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `passenger`
+--
+
+LOCK TABLES `passenger` WRITE;
+/*!40000 ALTER TABLE `passenger` DISABLE KEYS */;
+INSERT INTO `passenger` VALUES (30001,'Jim Kung','1852 Walnut Grove','604 839 2914','1995-03-24'),(30002,'Hassan Khosravi','15992 Yale Road','604 939 5921','1985-06-12'),(30003,'Alan Hu','2199 Fireman  St','778 482 1592','1999-01-01'),(30004,'Jim Carrey','West Broadway & 4th','604 828 8881','1958-12-24'),(30005,'Taylor Swift','68215 152 St','778 829 1952','1980-05-29');
+/*!40000 ALTER TABLE `passenger` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-06-16 18:14:10
+
+
+
+
+
+
+
+
+UBC AIR Route Schedule
+
+
+CREATE DATABASE  IF NOT EXISTS `ubcair` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `ubcair`;
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: ubcair
+-- ------------------------------------------------------
+-- Server version	5.6.25
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `routeschedule`
+--
+
+DROP TABLE IF EXISTS `routeschedule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `routeschedule` (
+  `routeid` int(11) NOT NULL,
+  `flightscheduleid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`routeid`),
+  KEY `flightschedule-id_idx` (`flightscheduleid`),
+  CONSTRAINT `flightscheduleid2` FOREIGN KEY (`flightscheduleid`) REFERENCES `flightschedule` (`flightscheduleid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `routeid1` FOREIGN KEY (`routeid`) REFERENCES `route` (`routeid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `routeschedule`
+--
+
+LOCK TABLES `routeschedule` WRITE;
+/*!40000 ALTER TABLE `routeschedule` DISABLE KEYS */;
+INSERT INTO `routeschedule` VALUES (5,1),(1,2),(3,2),(4,3),(2,4);
+/*!40000 ALTER TABLE `routeschedule` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-06-16 18:14:10
+
+
+
+
+
+
+
+
+
+
+UBC AIR Ticket flight
+
+
+CREATE DATABASE  IF NOT EXISTS `ubcair` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `ubcair`;
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: ubcair
+-- ------------------------------------------------------
+-- Server version	5.6.25
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `ticketflight`
+--
+
+DROP TABLE IF EXISTS `ticketflight`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ticketflight` (
+  `flightscheduleid` int(11) NOT NULL,
+  `cancellationfee` decimal(13,2) DEFAULT NULL,
+  PRIMARY KEY (`flightscheduleid`),
+  CONSTRAINT `flightscheduleid1` FOREIGN KEY (`flightscheduleid`) REFERENCES `flightschedule` (`flightscheduleid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ticketflight`
+--
+
+LOCK TABLES `ticketflight` WRITE;
+/*!40000 ALTER TABLE `ticketflight` DISABLE KEYS */;
+INSERT INTO `ticketflight` VALUES (1,NULL),(2,NULL),(3,100.00),(4,300.00),(5,NULL);
+/*!40000 ALTER TABLE `ticketflight` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-06-16 18:14:10
+
+
+
+
+
+
+
+
+
+
+
+
+UBC AIR Ticket
+
+
+CREATE DATABASE  IF NOT EXISTS `ubcair` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `ubcair`;
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: ubcair
+-- ------------------------------------------------------
+-- Server version	5.6.25
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `ticket`
+--
+
+DROP TABLE IF EXISTS `ticket`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ticket` (
+  `ticketNo` int(11) NOT NULL,
+  `price` decimal(13,2) DEFAULT NULL,
+  `bookingdate` date DEFAULT NULL,
+  `cancellationdate` date DEFAULT NULL,
+  `employeeid` int(11) DEFAULT NULL,
+  `flightscheduleid` int(11) DEFAULT NULL,
+  `passengerid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ticketNo`),
+  KEY `passenger-id_idx` (`passengerid`),
+  KEY `employee-id_idx` (`employeeid`),
+  KEY `flightschedule-id_idx` (`flightscheduleid`),
+  CONSTRAINT `FKticketemployeeid` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`),
+  CONSTRAINT `FKticketflightscheduleid` FOREIGN KEY (`flightscheduleid`) REFERENCES `flightschedule` (`flightscheduleid`),
+  CONSTRAINT `FKticketpassengerid` FOREIGN KEY (`passengerid`) REFERENCES `passenger` (`passengerid`) ON DELETE CASCADE,
+  CONSTRAINT `employeeid2` FOREIGN KEY (`employeeid`) REFERENCES `employee` (`employeeid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `flightscheduleid` FOREIGN KEY (`flightscheduleid`) REFERENCES `flightschedule` (`flightscheduleid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `passengerid2` FOREIGN KEY (`passengerid`) REFERENCES `passenger` (`passengerid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ticket`
+--
+
+LOCK TABLES `ticket` WRITE;
+/*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
+INSERT INTO `ticket` VALUES (83500001,335.00,'2015-01-01','2015-08-12',10005,4,30001),(83500002,769.00,'2015-07-09','2015-09-08',10002,3,30004),(83500003,554.00,'2015-06-15',NULL,10004,1,30002),(83500004,678.00,'2015-05-27',NULL,10001,5,30003),(83500005,421.00,'2015-11-02',NULL,10003,2,30001);
+/*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-06-16 18:14:11
